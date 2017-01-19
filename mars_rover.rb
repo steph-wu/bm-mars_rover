@@ -80,3 +80,29 @@ class Rover
   end
 
 end
+
+################################################
+
+# Starting coordinates and directions for rover 1
+
+p "Enter rover's starting coordinates"
+coordinates = gets.chomp
+start = coordinates.split(" ").map(&:strip)
+
+mars_Rover = Rover.new(start[0].to_i, start[1].to_i, start[2])
+
+p "Enter directions"
+directions = gets.chomp
+mars_Rover.read_instruction(directions)
+
+# Starting coordinates and directions for rover 2
+
+p "Enter rover's starting coordinates"
+coordinates = gets.chomp
+start = coordinates.split(" ").map(&:strip)
+
+mars_Rover2 = Rover.new(start[0].to_i, start[1].to_i, start[2])
+
+p "Enter directions"
+directions = gets.chomp
+mars_Rover2.read_instruction(directions)
