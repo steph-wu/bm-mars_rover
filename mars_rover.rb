@@ -8,58 +8,75 @@ class Rover
     @direction = direction
   end
 
-  def instruction
+# Takes instructions, breaks characters into an array,
+# iterates through instructions and invokes
+# corresponding method
+
+  def read_instruction(input)
+
+    instruction = input.scan /\w/
+    instruction.each do |step|
+      if step == 'L'
+        turn_left
+      elsif step == 'R'
+        turn_right
+      else
+        move
+      end
+    end
+
   end
+
+# 'Moves' rover's x and y coordinates relative to its
+# current coordinates and direction
 
   def move
+
+    case
+    when @direction == 'N'
+      @y += 1
+    when @direction == 'E'
+      @x += 1
+    when @direction == 'S'
+      @y -= 1
+    when @direction == 'W'
+      @x -= 1
+    end
+
   end
 
-  def turn(new_direction)
+# Changes direction of rover when turning left
 
-      case
-        when @direction == 'N'
-          if new_direction == 'L'
-            @direction = 'W'
-          else
-            @direction = 'E'
-          end
-        when @direction == 'E'
-          if new_direction == 'L'
-            @direction = 'N'
-          else
-            @direction = 'S'
-          end
-        when @direction == 'S'
-          if new_direction == 'L'
-            @direction = 'E'
-          else
-            @direction = 'W'
-          end
-        when @direction == 'W'
-          if new_direction == 'L'
-            @direction = 'S'
-          else
-            @direction = 'S'
-          end
-      end
+  def turn_left
+
+    case
+    when @direction == 'N'
+      @direction = 'W'
+    when @direction == 'E'
+      @direction = 'N'
+    when @direction == 'S'
+      @direction = 'E'
+    when @direction == 'W'
+      @direction = 'S'
+    end
+
+  end
+
+# Changes direction of rover when turning right
+
+  def turn_right
+
+    case
+    when @direction == 'N'
+      @direction = 'E'
+    when @direction == 'E'
+      @direction = 'S'
+    when @direction == 'S'
+      @direction = 'W'
+    when @direction == 'W'
+      @direction = 'N'
+    end
 
   end
 
 end
-
-test = Rover.new(0,0,'N')
-
-test.turn('R')
-puts test.direction
-
-test.turn('L')
-puts test.direction
-
-test.turn('L')
-puts test.direction
-
-
-# N = y + 1
-# E = x + 1
-# S = y - 1
-# W = x - 1
