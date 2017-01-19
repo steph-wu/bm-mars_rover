@@ -83,26 +83,36 @@ end
 
 ################################################
 
+# Enter plateau size
+
+p "Enter plateau size:"
+plateau = gets.chomp
+
 # Starting coordinates and directions for rover 1
 
-p "Enter rover's starting coordinates"
+p "Enter rover's starting coordinates:"
 coordinates = gets.chomp
 start = coordinates.split(" ").map(&:strip)
 
 mars_Rover = Rover.new(start[0].to_i, start[1].to_i, start[2])
 
-p "Enter directions"
+p "Enter directions:"
 directions = gets.chomp
 mars_Rover.read_instruction(directions)
 
 # Starting coordinates and directions for rover 2
 
-p "Enter rover's starting coordinates"
+p "Enter rover's starting coordinates:"
 coordinates = gets.chomp
 start = coordinates.split(" ").map(&:strip)
 
 mars_Rover2 = Rover.new(start[0].to_i, start[1].to_i, start[2])
 
-p "Enter directions"
+p "Enter directions:"
 directions = gets.chomp
 mars_Rover2.read_instruction(directions)
+
+# Display final coordinates
+
+p "Rover 1: #{mars_Rover.x} #{mars_Rover.y} #{mars_Rover.direction}"
+p "Rover 2: #{mars_Rover2.x} #{mars_Rover2.y} #{mars_Rover2.direction}"
